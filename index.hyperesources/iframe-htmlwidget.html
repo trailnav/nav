@@ -1,0 +1,62 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        
+        <div id="copy">
+             
+             Please continue with Facebook log in
+             
+     
+        </div>
+     <div id="login">
+  
+      <input type ="button" id="login-btn" onclick="facebookLogin()" value= "Continue with Facebook">
+          
+         
+     
+     </div> 
+
+
+<script>
+  function facebookLogin() {
+    var FB = window.FB;
+    var scopes = 'email,user,';
+ 
+    FB.login(function(response) {
+      if (response.status === 'connected') {
+        console.log('The user has logged in!');
+        FB.api('/me', function(response) {
+          console.log('Good to see you, ' + response.name + '.');
+        });
+      }
+    }, { scope: scopes });
+  }
+ 
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2253682594857955',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.0'
+    });
+  };
+ 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+    </body>
+
+
+
+
+
+</html>
+
